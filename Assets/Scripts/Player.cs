@@ -17,9 +17,6 @@ public class Player : MonoBehaviour
     private Vector3 m_velocity = Vector3.zero;
 
     private bool m_canRun = false;
-
-    private float m_checkRun = 0.005f;
-    private float m_checkChangeKey = 0.005f;
     float fTimeElapsed;
     // Start is called before the first frame update
     private void Awake()
@@ -35,26 +32,6 @@ public class Player : MonoBehaviour
         {
             m_rigid2D.AddForce(new Vector2(0f, m_jumpPower));
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-
-            m_checkRun -= Time.deltaTime;
-            Debug.Log(m_checkRun);
-            if (m_checkRun < 0)
-            {
-                m_canRun = true;
-            }
-            m_checkRun = 0.005f;
-
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            if ()
-                Debug.Log("Key up");
-            m_canRun = false;
-
-        }
     }
 
     // FixedUpdate
@@ -62,11 +39,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-        if (!m_canRun)
-            Move(h, m_moveSpeed);
-
-        else if (m_canRun)
-            Move(h, m_runSpeed);
+        Move(h, m_moveSpeed);
 
     }
 
