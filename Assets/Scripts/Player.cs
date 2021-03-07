@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
         {
             m_rigid2D.AddForce(new Vector2(0f, m_jumpPower));
         }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Attack 1");
+        }
     }
 
     // FixedUpdate
